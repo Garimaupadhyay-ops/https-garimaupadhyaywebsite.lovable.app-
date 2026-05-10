@@ -1,0 +1,363 @@
+    id: 'oxidative_deamination',
+    name: 'Oxidative Deamination',
+    category: 'amino_acid',
+    primaryOrgans: ['liver'],
+    secondaryOrgans: ['kidney'],
+    compartments: ['mitochondrial_matrix'],
+    organelles: ['Mitochondrial matrix'],
+    cellTypes: ['Hepatocytes', 'Renal cells'],
+    physiologicalStates: ['fasting', 'starvation'],
+    overview: 'Removes amino nitrogen, especially through glutamate dehydrogenase.',
+    locationNote: 'Mitochondrial matrix process feeding ammonia into urea cycle or renal ammonium handling.',
+    clinicalAnchor: 'Hyperammonemia and nitrogen disposal disorders.',
+    implemented: false,
+  },
+  {
+    id: 'amino_acid_catabolism',
+    name: 'Amino Acid Catabolism',
+    category: 'amino_acid',
+    primaryOrgans: ['liver'],
+    secondaryOrgans: ['muscle', 'kidney'],
+    compartments: ['cytoplasm', 'mitochondrial_matrix'],
+    organelles: ['Cytosol', 'Mitochondria'],
+    cellTypes: ['Hepatocytes', 'Myocytes'],
+    physiologicalStates: ['fasting', 'starvation'],
+    overview: 'Breaks amino acid carbon skeletons into TCA, gluconeogenic, or ketogenic intermediates.',
+    locationNote: 'Distributed across cytosol and mitochondria depending on amino acid.',
+    clinicalAnchor: 'MSUD, PKU, maple syrup urine disease, organic acidemias.',
+    implemented: false,
+  },
+  {
+    id: 'protein_synthesis',
+    name: 'Protein Synthesis',
+    category: 'protein',
+    primaryOrgans: ['all'],
+    secondaryOrgans: [],
+    compartments: ['cytoplasm', 'endoplasmic_reticulum'],
+    organelles: ['Ribosomes', 'Rough endoplasmic reticulum'],
+    cellTypes: ['Most human cells'],
+    physiologicalStates: ['fed'],
+    overview: 'Translates mRNA into protein on ribosomes.',
+    locationNote: 'Cytosolic ribosomes make cytosolic proteins; rough ER handles secreted, membrane, and lysosomal proteins.',
+    clinicalAnchor: 'Antibiotic selectivity, ER stress, protein misfolding.',
+    implemented: false,
+  },
+  {
+    id: 'creatine_biosynthesis',
+    name: 'Creatine Biosynthesis',
+    category: 'amino_acid',
+    primaryOrgans: ['kidney', 'liver'],
+    secondaryOrgans: ['pancreas'],
+    compartments: ['cytoplasm'],
+    organelles: ['Cytosol'],
+    cellTypes: ['Renal cells', 'Hepatocytes'],
+    physiologicalStates: ['fed', 'fasting'],
+    overview: 'Synthesizes creatine from arginine, glycine, and methionine-derived methyl groups.',
+    locationNote: 'Kidney begins guanidinoacetate formation; liver methylates it to creatine.',
+    clinicalAnchor: 'Creatine transporter and synthesis deficiencies.',
+    implemented: false,
+  },
+  {
+    id: 'purine_synthesis',
+    name: 'Purine Synthesis',
+    category: 'nucleotide',
+    primaryOrgans: ['liver'],
+    secondaryOrgans: ['all'],
+    compartments: ['cytoplasm'],
+    organelles: ['Cytosol'],
+    cellTypes: ['Proliferating cells', 'Hepatocytes'],
+    physiologicalStates: ['fed'],
+    overview: 'Builds IMP and purine nucleotides on ribose phosphate.',
+    locationNote: 'Cytosolic pathway using PRPP and one-carbon units.',
+    clinicalAnchor: 'Gout, Lesch-Nyhan syndrome, chemotherapy targets.',
+    implemented: false,
+  },
+  {
+    id: 'pyrimidine_synthesis',
+    name: 'Pyrimidine Synthesis',
+    category: 'nucleotide',
+    primaryOrgans: ['liver'],
+    secondaryOrgans: ['all'],
+    compartments: ['cytoplasm', 'mitochondrial_matrix'],
+    organelles: ['Cytosol', 'Mitochondria'],
+    cellTypes: ['Proliferating cells', 'Hepatocytes'],
+    physiologicalStates: ['fed'],
+    overview: 'Builds pyrimidine ring first, then attaches it to ribose phosphate.',
+    locationNote: 'Mostly cytosolic; dihydroorotate dehydrogenase is mitochondrial inner membrane-associated.',
+    clinicalAnchor: 'Orotic aciduria, leflunomide target.',
+    implemented: false,
+  },
+  {
+    id: 'heme_biosynthesis',
+    name: 'Heme Biosynthesis',
+    category: 'heme',
+    primaryOrgans: ['liver', 'rbc'],
+    secondaryOrgans: [],
+    compartments: ['mitochondrial_matrix', 'cytoplasm'],
+    organelles: ['Mitochondria', 'Cytosol'],
+    cellTypes: ['Hepatocytes', 'Erythroid precursors'],
+    physiologicalStates: ['fed'],
+    overview: 'Synthesizes heme through alternating mitochondrial and cytosolic steps.',
+    locationNote: 'Begins and ends in mitochondria; middle porphyrin steps are cytosolic.',
+    clinicalAnchor: 'Porphyrias and lead poisoning.',
+    implemented: false,
+  },
+  {
+    id: 'heme_catabolism',
+    name: 'Heme Catabolism',
+    category: 'heme',
+    primaryOrgans: ['liver'],
+    secondaryOrgans: ['rbc'],
+    compartments: ['endoplasmic_reticulum', 'cytoplasm'],
+    organelles: ['Macrophage ER', 'Cytosol', 'Liver ER'],
+    cellTypes: ['Reticuloendothelial macrophages', 'Hepatocytes'],
+    physiologicalStates: ['fed', 'fasting'],
+    overview: 'Breaks heme into biliverdin, bilirubin, and excretable conjugates.',
+    locationNote: 'Macrophages produce unconjugated bilirubin; liver conjugates it in ER.',
+    clinicalAnchor: 'Jaundice, Gilbert syndrome, Crigler-Najjar syndrome.',
+    implemented: false,
+  },
+  {
+    id: 'ethanol_metabolism',
+    name: 'Ethanol Metabolism',
+    category: 'detoxification',
+    primaryOrgans: ['liver'],
+    secondaryOrgans: [],
+    compartments: ['cytoplasm', 'mitochondrial_matrix', 'endoplasmic_reticulum'],
+    organelles: ['Cytosol', 'Mitochondria', 'Smooth ER'],
+    cellTypes: ['Hepatocytes'],
+    physiologicalStates: ['alcohol_metabolism'],
+    overview: 'Oxidizes ethanol to acetaldehyde and acetate, increasing NADH burden.',
+    locationNote: 'ADH is cytosolic, ALDH is mitochondrial, and CYP2E1 operates in smooth ER.',
+    clinicalAnchor: 'Fatty liver, lactic acidosis, disulfiram reaction.',
+    implemented: false,
+  },
+  {
+    id: 'glucuronidation',
+    name: 'Glucuronidation',
+    category: 'detoxification',
+    primaryOrgans: ['liver'],
+    secondaryOrgans: ['intestine', 'kidney'],
+    compartments: ['endoplasmic_reticulum'],
+    organelles: ['Smooth endoplasmic reticulum'],
+    cellTypes: ['Hepatocytes', 'Enterocytes'],
+    physiologicalStates: ['fed'],
+    overview: 'Conjugates bilirubin, drugs, and hormones with glucuronic acid for excretion.',
+    locationNote: 'ER-localized UDP-glucuronosyltransferase reactions.',
+    clinicalAnchor: 'Neonatal jaundice, Gilbert syndrome, drug metabolism.',
+    implemented: false,
+  },
+  {
+    id: 'polyamine_synthesis',
+    name: 'Polyamine Synthesis',
+    category: 'special',
+    primaryOrgans: ['all'],
+    secondaryOrgans: ['liver'],
+    compartments: ['cytoplasm'],
+    organelles: ['Cytosol'],
+    cellTypes: ['Proliferating cells'],
+    physiologicalStates: ['fed'],
+    overview: 'Produces putrescine, spermidine, and spermine for growth and nucleic acid stabilization.',
+    locationNote: 'Cytosolic pathway linked to ornithine and methionine metabolism.',
+    clinicalAnchor: 'Cancer proliferation and ornithine decarboxylase regulation.',
+    implemented: false,
+  },
+];
+
+export function getPathwaysForOrgan(organ: Organ) {
+  return PATHWAY_LOCATIONS.filter(
+    (pathway) =>
+      pathway.primaryOrgans.includes(organ) ||
+      pathway.secondaryOrgans.includes(organ) ||
+      pathway.primaryOrgans.includes('all'),
+  );
+}
+
+export function getPathwaysForOrganelle(organelle: string) {
+  const needle = organelle.toLowerCase();
+  return PATHWAY_LOCATIONS.filter((pathway) =>
+    pathway.organelles.some((item) => item.toLowerCase().includes(needle)),
+  );
+}
+        <h2 className="mt-2 font-display text-3xl font-black text-white">Metabolic Atlas</h2>
+        <p className="mt-2 text-sm leading-6 text-slate-400">
+          Select an organ to see which metabolic pathways are active and where they happen inside the cell.
+        </p>
+
+        <div className="relative mt-6 aspect-[3/4] rounded-md border border-white/10 bg-[radial-gradient(circle_at_50%_20%,rgba(0,255,136,0.10),transparent_42%),rgba(255,255,255,0.025)]">
+          <svg className="h-full w-full" viewBox="0 0 100 130" role="img" aria-label="Human organ metabolism map">
+            <path
+              d="M50 8 C35 8 29 18 30 30 C31 40 24 42 23 55 C22 77 36 91 39 116 L61 116 C64 91 78 77 77 55 C76 42 69 40 70 30 C71 18 65 8 50 8 Z"
+              fill="rgba(15,23,42,0.72)"
+              stroke="rgba(148,163,184,0.20)"
+              strokeWidth="1.2"
+            />
+            {ORGANS.map((organ) => {
+              const active = organ.id === selectedOrgan;
+              return (
+                <g
+                  key={organ.id}
+                  transform={`translate(${organ.x} ${organ.y})`}
+                  onClick={() => setSelectedOrgan(organ.id)}
+                  style={{ cursor: 'pointer' }}
+                >
+                  <circle
+                    r={active ? 6.8 : 4.8}
+                    fill={organ.color}
+                    opacity={active ? 0.95 : 0.45}
+                    style={{ filter: active ? `drop-shadow(0 0 8px ${organ.color})` : undefined }}
+                  />
+                  <text
+                    y={active ? -9 : -7}
+                    textAnchor="middle"
+                    fill={active ? '#f8fafc' : '#64748b'}
+                    fontSize={active ? 5 : 4}
+                    fontWeight="700"
+                  >
+                    {organ.name}
+                  </text>
+                </g>
+              );
+            })}
+          </svg>
+        </div>
+
+        <div className="mt-4 rounded-md border border-white/10 bg-white/[0.03] p-4">
+          <div className="font-display text-xl font-bold text-white">{selectedOrganMeta.name}</div>
+          <div className="mt-1 text-sm leading-6 text-slate-400">{selectedOrganMeta.note}</div>
+        </div>
+      </aside>
+
+      <main className="relative min-h-0 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(56,189,248,0.10),transparent_40%)]" />
+        <div className="relative flex h-full min-h-0 flex-col">
+          <header className="border-b border-white/10 bg-slate-950/60 p-5 backdrop-blur">
+            <div className="flex flex-wrap items-center gap-3">
+              <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.24em] text-sky-300">
+                <CircleDot size={15} />
+                Cell and Organelle Layer
+              </div>
+              <div className="ml-auto flex flex-wrap gap-2">
+                {['All', 'Cytosol', 'Mitochondria', 'Endoplasmic reticulum', 'Lysosome', 'Peroxisome'].map((organelle) => (
+                  <button
+                    key={organelle}
+                    type="button"
+                    onClick={() => setSelectedOrganelle(organelle)}
+                    className={`rounded-md border px-3 py-2 font-mono text-xs transition ${
+                      selectedOrganelle === organelle
+                        ? 'border-sky-300/60 bg-sky-300/10 text-sky-100'
+                        : 'border-white/10 text-slate-500 hover:border-white/25 hover:text-slate-300'
+                    }`}
+                  >
+                    {organelle}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </header>
+
+          <section className="grid min-h-0 flex-1 grid-cols-1 gap-5 p-5 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1fr)]">
+            <div className="relative min-h-[420px] rounded-md border border-white/10 bg-slate-950/50">
+              <svg className="h-full w-full" viewBox="0 0 100 100" role="img" aria-label="Cell organelle map">
+                <circle cx="50" cy="50" r="42" fill="rgba(15,23,42,0.78)" stroke="rgba(148,163,184,0.18)" strokeWidth="1.2" />
+                {ORGANELLES.map((organelle) => {
+                  const active =
+                    selectedOrganelle === 'All' ||
+                    organelle.name.toLowerCase().includes(selectedOrganelle.toLowerCase());
+                  return (
+                    <g key={organelle.name}>
+                      <circle
+                        cx={organelle.x}
+                        cy={organelle.y}
+                        r={organelle.r}
+                        fill={organelle.color}
+                        opacity={active ? 0.18 : 0.035}
+                        stroke={organelle.color}
+                        strokeWidth={active ? 0.9 : 0.35}
+                      />
+                      <text
+                        x={organelle.x}
+                        y={organelle.y + organelle.r + 5}
+                        textAnchor="middle"
+                        fill={active ? '#e2e8f0' : '#475569'}
+                        fontSize="3.8"
+                        fontWeight="700"
+                      >
+                        {organelle.name}
+                      </text>
+                    </g>
+                  );
+                })}
+              </svg>
+            </div>
+
+            <div className="min-h-0 overflow-y-auto rounded-md border border-white/10 bg-slate-950/50 p-4">
+              <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.22em] text-slate-500">
+                <Filter size={14} />
+                {pathways.length} pathways in view
+              </div>
+              <div className="mt-4 grid gap-3">
+                {pathways.map((pathway) => (
+                  <article
+                    key={pathway.id}
+                    className="rounded-md border border-white/10 bg-white/[0.03] p-4 transition hover:border-emerald-300/30"
+                  >
+                    <div className="flex items-start gap-3">
+                      <div
+                        className={`mt-1 h-3 w-3 shrink-0 rounded-full ${
+                          pathway.implemented ? 'bg-emerald-300' : 'bg-slate-600'
+                        }`}
+                      />
+                      <div className="min-w-0">
+                        <h3 className="font-display text-lg font-bold text-white">{pathway.name}</h3>
+                        <p className="mt-1 text-sm leading-6 text-slate-400">{pathway.overview}</p>
+                        <div className="mt-3 flex flex-wrap gap-2">
+                          {pathway.organelles.map((organelle) => (
+                            <span
+                              key={organelle}
+                              className="rounded border border-sky-300/20 bg-sky-300/10 px-2 py-1 font-mono text-[11px] text-sky-100"
+                            >
+                              {organelle}
+                            </span>
+                          ))}
+                        </div>
+                        <div className="mt-3 text-xs leading-5 text-slate-500">{pathway.locationNote}</div>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <aside className="hidden min-h-0 border-l border-white/10 bg-slate-950/80 p-5 backdrop-blur-xl xl:block">
+        <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.24em] text-amber-300">
+          <Activity size={15} />
+          Body to Atom Roadmap
+        </div>
+        <div className="mt-4 space-y-3">
+          {['Body', 'Organ', 'Cell', 'Organelle', 'Pathway', 'Reaction', 'Molecule', 'Atom'].map((level, index) => (
+            <div key={level} className="flex items-center gap-3 rounded-md border border-white/10 bg-white/[0.03] p-3">
+              <div className="flex h-8 w-8 items-center justify-center rounded border border-amber-300/25 bg-amber-300/10 font-mono text-xs text-amber-100">
+                {index + 1}
+              </div>
+              <div className="font-display font-bold text-white">{level}</div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-6 rounded-md border border-emerald-300/20 bg-emerald-300/10 p-4">
+          <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.22em] text-emerald-200">
+            <Dna size={14} />
+            Accuracy rule
+          </div>
+          <p className="mt-2 text-sm leading-6 text-emerald-50">
+            Full reaction animations should be added only after curated substrates, enzymes, cofactors,
+            compartments, energetics, and atom mappings exist for that pathway.
+          </p>
+        </div>
+      </aside>
+    </div>
+  );
+}
